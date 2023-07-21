@@ -4,8 +4,8 @@ module.exports= (sequelize) => {
     const Pokemons = sequelize.define('pokemons', {
         id: {
           type: DataTypes.UUID,
-          defaultValue: DataTypes.UUIDV1,
-          primaryKey: true,
+          defaultValue: DataTypes.UUIDV4,
+          primaryKey: true
         },
         name: {
             type: DataTypes.STRING,
@@ -32,17 +32,14 @@ module.exports= (sequelize) => {
         },
         speed:{
             type: DataTypes.INTEGER,
-            allowNull: false
         },
         height: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
         weight:{
             type: DataTypes.INTEGER,
-            allowNull: false
         }
     },{timestamps:false})
-
+    
     return Pokemons;
 }

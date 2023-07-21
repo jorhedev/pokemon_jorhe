@@ -1,18 +1,15 @@
+import {Route, Routes} from "react-router-dom"
 
 import './App.css'
+import Login from './components/Login/Login'
 
 function App() {
 
   return (
     <>
-      <div>
-      </div>
-      <h1>Pokemon API</h1>
-      <div className="card">
-        <p>
-          proximamente...
-        </p>
-      </div>
+      <Routes>
+        <Route path='/' element={<Login/>}/>
+      </Routes>
     </>
   )
 }

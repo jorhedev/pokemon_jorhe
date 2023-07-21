@@ -1,0 +1,73 @@
+.container{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../../assets/pokemonStart.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    margin-top: -13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title h1{
+    font-family: 'Secular One', sans-serif;
+    color: white;
+    font-size: 5rem;
+    margin: 0;
+
+}
+.title h3{
+    letter-spacing: 2px;
+    font-family: 'Secular One', sans-serif;
+    color: white;
+    margin-top: -1rem;
+}
+
+
+.buttonContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .buttonContainer button {
+    font-family: 'Secular One', sans-serif;
+    font-size: 1.5rem;
+    width: 120px; /* Adjust the width as per your needs */
+    height: 40px;
+    margin-bottom: 110px;
+    margin-right: 70px;
+    border-radius: 3px ;
+    border-color: black;
+    color: white;
+    background-color: transparent; /* Set a solid background color */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); /* Add a gradient overlay for the bevel effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5); /* Create the bevel effect */
+    }
+
+    .buttonContainer button:hover{
+        transform: translateY(-2px); /* Move the button slightly up on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5);
+    }
