@@ -1,6 +1,28 @@
 import styles from "./Login.module.css";
+import { useState, useEffect  } from "react";
+import {useNavigate} from "react-router-dom";
+
 
 const Login = () => {
+
+const navigate = useNavigate();
+const [access, setAccess] = useState(false);
+
+const login = async () => {
+  try {
+    setAccess(true);
+    access && navigate("/home");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+useEffect(() => {
+  if (access) {
+    navigate("/home");
+  }
+}, [access, navigate]);
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>
@@ -10,7 +32,7 @@ const Login = () => {
         </div>
       </div>
       <div className={styles.buttonContainer}>
-        <button>START</button>
+        <button onClick={login}>START</button>
       </div>
     </div>
   );
