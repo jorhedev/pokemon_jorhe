@@ -1,0 +1,40 @@
+
+
+.filter h3{
+    font-family: 'Secular One', sans-serif;
+    color: white;
+    letter-spacing: 5px;
+}
+
+.filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons{
+    font-family: 'Secular One', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    color: white;
+    cursor: pointer;
+    width: auto;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); /* Add a gradient overlay for the bevel effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+    margin-left: 20px;
+    padding: 5px 15px;
+}
+
+.buttons:hover{
+    color: black;
+    background: transparent;
+    transform: translateY(-2px); /* Move the button slightly up on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5);
+}

@@ -1,4 +1,7 @@
-
+:root {
+    --color1: rgb(0, 231, 255);
+    --color2: rgb(255, 0, 231);
+}
 
 .container{
     flex-direction: column;
@@ -13,53 +16,146 @@
     background-size:cover;
 }
 
+.cardDetail{
+
+    height: 700px;
+    width: 350px;
+    border-radius: 5% / 3.5%;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    overflow: hidden;
+    z-index: 10;
+    touch-action: none;
+    
+    box-shadow: 
+      -5px -5px 5px -5px var(--color1), 
+      5px 5px 5px -5px var(--color2), 
+      -7px -7px 10px -5px transparent, 
+      7px 7px 10px -5px transparent, 
+      0 0 5px 0px rgba(255,255,255,0),
+      0 55px 35px -20px rgba(0, 0, 0, 0.5);
+      transition: transform 5s ease, box-shadow 2s ease;  will-change: transform, filter;
+  
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transform-origin: center;
 
 
-.container img{
-    height: auto;
-    width: 420px;
+}
+
+.cardDetail:hover{
+    box-shadow: 
+    -20px -20px 30px -25px var(--color1), 
+    20px 20px 30px -25px var(--color2), 
+    -7px -7px 10px -5px var(--color1), 
+    7px 7px 10px -5px var(--color2), 
+    0 0 13px 4px rgba(255,255,255,0.3),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+    transition: 2s;
+}
+.cardDetail:before,
+.cardDetail:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-repeat: no-repeat;
+  opacity: .5;
+  mix-blend-mode: color-dodge;
+  transition: all .33s ease;
+}
+
+.cardDetail:before {
+  background-position: 50% 50%;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    var(--color1) 25%,
+    transparent 47%,
+    transparent 53%,
+    var(--color2) 75%,
+    transparent 100%
+  );
+  opacity: .5;
+  filter: brightness(.5) contrast(1);
+  z-index: 1;
+}
+
+.cardDetail:after {
+  opacity: 1;
+  background-image: url("https://assets.codepen.io/13471/sparkles.gif"), 
+    url(https://assets.codepen.io/13471/holo.png), 
+    linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
+  background-position: 50% 50%;
+  background-size: 160%;
+  background-blend-mode: overlay;
+  z-index: 2;
+  filter: brightness(1) contrast(1);
+  transition: all .33s ease;
+  mix-blend-mode: color-dodge;
+  opacity: .75;
+}
+
+.cardDetail.active:after,
+.cardDetail:hover:after {
+  filter: brightness(1) contrast(1);;
+  opacity: 1;
+}
+
+.cardDetail.active,
+.cardDetail:hover {
+  animation: none;
+  transition: box-shadow 0.1s ease-out;
+}
+
+.cardDetail.active:before,
+.cardDetail:hover:before {
+  animation: none;
+  background-image: linear-gradient(
+    110deg,
+    transparent 25%,
+    var(--color1) 48%,
+    var(--color2) 52%,
+    transparent 75%
+  );
+  background-position: 50% 50%;
+  background-size: 250% 250%;
+  opacity: .88;
+  filter: brightness(.66) contrast(1.33);
+  transition: 1s;
 }
 
 
 
-.container{
-    color: white;
-    font-size: 25px;
-    text-transform: capitalize;
-    letter-spacing: 2px;
-}
 
-.container h2{
-    color: white;
-    font-size: 65px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
-}
-
-.container p{
-    color: white;
-    text-transform: none;
-    letter-spacing: 1px;
-    line-height: 28px;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.container span{
-    font-size: 20px;
-    color: white;
-}
-
-.aboutContent{
-    width: 1130px;
-    max-width: 95%;
-    margin: 0 auto;
+.cardAbout{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.aboutMe{
-    width: 650px;
-    padding-left: 50px;
+
+.img{
+    width: 250px;
+    height: auto;
 }
+
+.aboutPokemon{
+    font-family: 'Secular One', sans-serif;
+    color: white;
+}
+
+.aboutPokemon h2{
+    text-transform: uppercase;
+    font-size: 50px;
+    margin-top: -30px;
+}
+
+

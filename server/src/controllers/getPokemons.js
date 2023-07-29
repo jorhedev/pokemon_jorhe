@@ -14,12 +14,14 @@ const getPokemons = async (req, res) => {
 
         const fetchPokemonData = async (url) => {
             const { data } = await axios.get(url);
-            const { id, name, sprites, types } = data;
+            const { id, name, sprites, types, stats } = data;
             const pokemonData = {
                 id,
                 name,
                 image: sprites.other["official-artwork"].front_default,
-                types
+                types,
+                attack: stats[1].base_stat,
+
             };
             return pokemonData;
         };

@@ -27,21 +27,16 @@ const getPokemonsName = async (req, res) => {
         if (dbPokemons.length === 0) {
           try {
             const { data } = await axios(`${URL}${lowercaseName}`);
-    
+            const {id, name, sprites, types} =data
             // Si se encontró en la API, devolver los datos del Pokémon
             const pokemonData = {
-              id: data.id,
-              name: data.name,
-              image: data.sprites.other['official-artwork'].front_default,
-              hp: data.stats[0].base_stat,
-              attack: data.stats[1].base_stat,
-              defense: data.stats[2].base_stat,
-              speed: data.stats[5].base_stat,
-              height: data.height,
-              weight: data.weight,
+              id,
+              name,
+              image: sprites.other["official-artwork"].front_default,
+              types,
             };
     
-            return res.status(200).json([pokemonData]);
+            return res.status(200).json(pokemonData);
           } catch (error) {
             // Si no se encontró en la API, mostrar mensaje adecuado
             return res.status(404).json({ message: 'No Pokemon found with that name' });

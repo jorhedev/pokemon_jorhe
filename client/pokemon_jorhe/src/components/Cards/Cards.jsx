@@ -1,31 +1,23 @@
 import Card from "../Card/Card";
+import SearchBar from "../SearchBar/SearchBar";
+import Filter from "../Filter/Filter";
 
 import { useSelector } from "react-redux";
 import styles from "./Cards.module.css";
 
+
 const Cards = () => {
-  // const URL = "http://localhost:3001/pokemons";
-  // const [pokemons, setPokemons] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchPokemons = async () => {
-  //     try {
-  //       const { data } = await axios(URL);
-  //       setPokemons(data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchPokemons();
-  // }, []);
-
-  const pokemons = useSelector(state=> state.pokemons)
-
+  const filteredPokemons = useSelector(state=> state.filteredPokemons)
+  
   return (
     <div className={styles.container}>
+      <div>
+      <SearchBar/>
+      <Filter/>
+      </div>
+
       <div className={styles.cards}>
-        {pokemons.map(pokemon => (
+        {filteredPokemons.map(pokemon => (
           <Card
             key={pokemon.id}
             id={pokemon.id}

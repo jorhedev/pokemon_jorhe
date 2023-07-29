@@ -5,7 +5,6 @@ const getPokemons = require('../controllers/getPokemons')
 const getPokemonsId = require('../controllers/getPokemonId')
 const getPokemonsName = require('../controllers/getPokemonsName')
 const postPokemons = require('../controllers/postPokemons');
-const getAllTypes = require('../controllers/getAllTypes');
 
 const router = Router();
 

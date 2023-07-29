@@ -13,9 +13,10 @@ const HomePage = () => {
     dispatch(getPokemons());
   }, [dispatch]);
 
+
   return (
     <div className={styles.container}>
-
+      
       <Cards />
     </div>
   );

@@ -1,0 +1,60 @@
+
+.SearchBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input{
+    text-transform: capitalize;
+    font-family: 'Secular One', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+    text-indent: 10px;
+}
+
+::placeholder{
+    color: white;
+}
+
+.input:hover{
+    color: black;
+    background: transparent;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5); 
+}
+
+.buttons{
+    font-family: 'Secular One', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    width: auto;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+}
+
+.buttons:hover{
+    color: black;
+    background: transparent;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5); 
+}
