@@ -51,8 +51,15 @@ const Detail = () => {
           <p><span> Speed:</span> {pokemon.speed}</p>
           <p><span> Height:</span> {pokemon.height}</p>
           <p><span> Weight:</span> {pokemon.weight}</p>
-          <p><span></span>{pokemon.types}</p>
-        </div>
+        {pokemon.types && (
+          <p>
+            <span>Types:</span>
+            {pokemon.types.map((typeData) => (
+              <span key={typeData.type.name}>{typeData.type.name} </span>
+            ))}
+          </p>
+        )}      
+          </div>
         </div>
       </div>
 

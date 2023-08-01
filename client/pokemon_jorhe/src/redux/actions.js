@@ -7,12 +7,14 @@ export const FILTER = "FILTER";
 export const ORDER = "ORDER"
 export const ORDER_ATTACK = "ORDER_ATTACK"
 export const RESET = "RESET";
+export const SET_INDEX_PAGE = "SET_INDEX_PAGE";
 
 
 export const getPokemons = () => {
   return async function (dispatch) {
     const apiData = await axios.get("http://localhost:3001/pokemons");
     const pokemons = apiData.data;
+    
     dispatch({ type: GET_POKEMONS, payload: pokemons });
   };
 };
@@ -54,6 +56,13 @@ export const orderAttack = (ordenA) =>{
 export const reset = () => {
   return {
     type: RESET,
+  };
+};
+
+export const setIndexPage = (index) => {
+  return {
+    type: SET_INDEX_PAGE,
+    payload: index,
   };
 };
 

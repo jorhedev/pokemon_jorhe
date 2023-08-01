@@ -44,6 +44,7 @@ const getPokemonsId = async (req, res) => {
         speed: data.stats[5].base_stat,
         height: data.height,
         weight: data.weight,
+        types: data.types
       };
 
       res.status(200).json(pokemonData);

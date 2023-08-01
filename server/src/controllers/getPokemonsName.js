@@ -22,6 +22,7 @@ const getPokemonsName = async (req, res) => {
             },
           },
         });
+ 
     
         // Buscar en la API si no se encontraron en la base de datos
         if (dbPokemons.length === 0) {
@@ -48,12 +49,7 @@ const getPokemonsName = async (req, res) => {
           id: pokemon.id,
           name: pokemon.name,
           image: pokemon.image,
-          hp: pokemon.hp,
-          attack: pokemon.attack,
-          defense: pokemon.defense,
-          speed: pokemon.speed,
-          height: pokemon.height,
-          weight: pokemon.weight,
+          types: pokemon.types
         }));
     
         return res.status(200).json(pokemonData);

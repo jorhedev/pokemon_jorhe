@@ -1,0 +1,161 @@
+.container{
+    flex-direction: column;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url('../../assets/landscapePokemon1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    padding-top: 100px;
+    font-family: 'Secular One', sans-serif;
+}
+
+.container h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+
+}
+
+.boxForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: auto;
+    padding: 30px;
+    margin-left: 150px;
+    border-radius: 0px 0px 100px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px whitesmoke, inset 0 -2px 50px rgba(255, 255, 255, 0.5); /* Create the bevel effect */
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    font-family: 'Secular One', sans-serif;
+
+}
+
+.index{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0px 20px;
+}
+
+.index label{
+    color: white;
+    display: flex;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+.index input{
+    color: white;
+    display: flex;
+    width: 130px;
+    height: 20px;
+    text-indent: 10px;
+    padding: 5px 0px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.index input:hover{
+    background: transparent;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5); 
+}
+
+.index .error{
+    font-size: 0.9rem;
+    width: 130px;
+    font-weight: bold;
+
+}
+
+.details{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0px 20px;
+}
+
+
+.details label{
+    color: white;
+    display: flex;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+
+}
+
+.details input{
+    color: white;
+    display: flex;
+    width: 70px;
+    height: 20px;
+    text-indent: 30px;
+    padding: 5px 0px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.details input:hover{
+    background: transparent;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5); 
+}
+
+
+.details .error {
+    font-weight: bold;
+    font-size: 0.70rem;
+    margin-top: 10px;
+    width: 70px;
+    margin-bottom: none;
+    
+  }
+
+.form button{
+    margin-top: 30px;
+    font-family: 'Secular One', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    width: auto;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5);
+    margin-right: 10px;
+}
+
+.form button:hover{
+    color: black;
+    background: transparent;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5); 
+}

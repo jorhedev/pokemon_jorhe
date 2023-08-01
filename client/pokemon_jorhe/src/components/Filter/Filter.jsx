@@ -1,12 +1,13 @@
 import styles from './Filter.module.css'
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { filterCards, orderCards, orderAttack, reset } from "../../redux/actions";
+import { filterCards, orderCards, orderAttack, reset, setIndexPage } from "../../redux/actions";
 
 
 const Filter = () => {
     const dispatch = useDispatch();
+    const indexPage = useSelector((state) => state.indexPage);
 
 
   const [order, setOrder] = useState("");
@@ -18,6 +19,8 @@ const Filter = () => {
     setOrderA("");
     setOrder("");
     setFilter("");
+    dispatch(setIndexPage(indexPage));
+
   };
 
   const handleOrderAttack = (event) => {
@@ -51,7 +54,6 @@ const Filter = () => {
           value={orderA}
           onChange={handleOrderAttack}
           name="orderA"
-          defaultValue={""}
         >
           <option value="" disabled>
             ORDER ATTACK
@@ -65,7 +67,6 @@ const Filter = () => {
           value={order}
           onChange={handleOrder}
           name="order"
-          defaultValue={""}
         >
           <option value="" disabled>
             SELECT ORDER
@@ -78,7 +79,6 @@ const Filter = () => {
           value={filter}
           onChange={handleFilter}
           name='filter'
-          defaultValue={""}
         >
           <option value='' disabled>
             SELECT TYPES

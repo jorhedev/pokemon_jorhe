@@ -7,8 +7,7 @@ import styles from "./Cards.module.css";
 
 
 const Cards = () => {
-  const filteredPokemons = useSelector(state=> state.filteredPokemons)
-  
+  const updatedShowPokemons  = useSelector(state=> state.updatedShowPokemons )
   return (
     <div className={styles.container}>
       <div>
@@ -17,7 +16,7 @@ const Cards = () => {
       </div>
 
       <div className={styles.cards}>
-        {filteredPokemons.map(pokemon => (
+        {updatedShowPokemons .map(pokemon => (
           <Card
             key={pokemon.id}
             id={pokemon.id}

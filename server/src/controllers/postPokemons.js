@@ -2,7 +2,6 @@ const axios = require("axios");
 const { Pokemons, Type } = require("../db");
 const { Op } = require("sequelize");
 
-const URL = "https://pokeapi.co/api/v2/pokemon/";
 
 const postPokemons = async (req, res) => {
   try {
