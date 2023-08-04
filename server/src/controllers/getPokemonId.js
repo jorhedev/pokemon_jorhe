@@ -5,31 +5,46 @@ const { isUUID } = require("validator");
 const URL = "https://pokeapi.co/api/v2/pokemon/";
 
 const getPokemonsId = async (req, res) => {
+  let responseSent = false;
+
   try {
     const { idPokemon } = req.params;
 
     if (isUUID(idPokemon)) {
-      const dbData = await Pokemons.findOne({
+      const dbPokemon = await Pokemons.findOne({
         where: { id: idPokemon },
-        include: Type,
-      });
+        include: {
+            model: Type,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    });
 
+    if (dbPokemon) {
       const pokemonData = {
-        id: dbData.id,
-        name: dbData.name,
-        image: dbData.image,
-        hp: dbData.hp,
-        attack: dbData.attack,
-        defense: dbData.defense,
-        speed: dbData.speed,
-        height: dbData.height,
-        weight: dbData.weight,
-        types: dbData.Types.map((type) => type.name),
+        id: dbPokemon.id,
+        name: dbPokemon.name,
+        image: dbPokemon.image,
+        hp: dbPokemon.hp,
+        attack: dbPokemon.attack,
+        defense: dbPokemon.defense,
+        speed: dbPokemon.speed,
+        height: dbPokemon.height,
+        weight: dbPokemon.weight,
+        types: dbPokemon.Types.map((type) => ({
+          name: type.name,
+        })),
       };
-      res.status(200).json(pokemonData);
-    }
 
-    try {
+      res.status(200).json(pokemonData);
+      responseSent = true; 
+      return;
+    }
+  }
+
+  if (!responseSent) {
       const { data } = await axios(`${URL}${idPokemon}`);
 
       if (!data) throw Error("Not Found");
@@ -48,9 +63,7 @@ const getPokemonsId = async (req, res) => {
       };
 
       res.status(200).json(pokemonData);
-    } catch (error) {
-      res.status(404).json({ message: "Pokemon not found" });
-    }
+    } 
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -8,13 +8,22 @@ const postPokemons = async (req, res) => {
     const { name, image, hp, attack, defense, speed, height, weight, typeId } =
       req.body;
 
-    // Verificar que se proporcionen todos los datos necesarios
     if (!name || !image || !hp || !attack || !defense || !typeId) {
       return res.status(400).json({ message: "Missing required data" });
     }
 
     if (!Array.isArray(typeId)) {
       return res.status(400).json({ message: "Invalid types data" });
+    }
+
+    const existingPokemon = await Pokemons.findOne({
+      where: {
+        name: name
+      }
+    });
+
+    if (existingPokemon) {
+      return res.status(409).json({ message: "Pokemon already exists" });
     }
 
     // Crear el Pokémon en la base de datos
