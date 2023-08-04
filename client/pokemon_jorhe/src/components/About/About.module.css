@@ -1,0 +1,122 @@
+
+.container{
+    position: fixed;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../../assets/landscape03.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+}
+
+
+
+.reverse img{
+    height: auto;
+    width: 420px;
+    border-radius: 50%;
+    background-image: linear-gradient(315deg, #ff03d9, #00d0ff);
+    background-clip: padding-box;
+    transition: 0.5 ease;
+    box-shadow: 0 0 10px cyan, 0 0 25px #ff03a7;
+    transition: 2s;
+    margin-right: 50px;
+}
+
+.reverse img:hover{
+    box-shadow: 0 0 10px cyan,
+    0 0 25px #03ddff, 0 0 50px #ff03ea,
+    0 0 100px cyan;
+}
+
+.aboutMe{
+    font-family: 'Secular One', sans-serif;
+    width: 570px;
+}
+
+.aboutContent{
+    width: 1130px;
+    max-width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+
+}
+
+.container h1{
+    padding-top: 20px;
+    color: white;
+    font-size: 60px;
+    text-transform: capitalize;
+    line-height: 1; 
+}
+
+.container{
+    color: white;
+    font-size: 25px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+}
+
+.container h5{
+    color: white;
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.container span{
+    font-size: 20px;
+}
+
+.container p{
+    color: whitesmoke;
+    text-transform: none;
+    text-align: justify;
+    letter-spacing: 1px;
+    line-height: 28px;
+    font-size: 14px;
+    margin-bottom: 45px;
+}
+
+.contact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.icon a{
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    transition: 2s;
+  }
+
+.icon a:hover {
+    color: cyan;
+}
+
+.contact  button{
+    background: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: 2s;
+}
+
+.contact button:hover{
+    background: transparent;
+    border: 2px solid #00d0ff;
+    box-shadow: 0 0 25px cyan, 0 0 25px #ff03a7;
+    cursor: pointer;
+}

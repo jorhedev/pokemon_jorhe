@@ -2,7 +2,7 @@ import styles from './Filter.module.css'
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { filterCards, orderCards, orderAttack, reset, setIndexPage } from "../../redux/actions";
+import { filterCards, orderCards, orderAttack, reset, setIndexPage, setSources } from "../../redux/actions";
 
 
 const Filter = () => {
@@ -13,12 +13,17 @@ const Filter = () => {
   const [order, setOrder] = useState("");
   const [orderA, setOrderA] = useState("");
   const [filter, setFilter] = useState("");
+  const [source, setSource] = useState("");
+
 
   const handleReset = () => {
-    dispatch(reset());
+
+    dispatch(setSources(null));
     setOrderA("");
     setOrder("");
     setFilter("");
+    setSource("");
+    dispatch(reset());
     dispatch(setIndexPage(indexPage));
 
   };
@@ -46,9 +51,30 @@ const Filter = () => {
     setFilter(value);
   };
 
+  const handleSourceChange = (event) => {
+    event.preventDefault();
+    const value = event.target.value;
+    dispatch(setSources(value));
+    setSource(value);
+  };
+
   return (
       <div className={styles.filter}>
         <h3>FILTER</h3>
+
+        <select
+        className={styles.buttons}
+        value={source} // Asegúrate de utilizar el estado correcto para el valor seleccionado
+        onChange={handleSourceChange}
+        name="source"
+      >
+        <option value="" disabled>
+          SOURCE
+        </option>
+        <option value="API">API</option>
+        <option value="DB">DB</option>
+      </select>
+
         <select
           className={styles.buttons}
           value={orderA}

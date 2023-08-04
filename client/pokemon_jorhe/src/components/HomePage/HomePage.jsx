@@ -1,6 +1,7 @@
 import styles from "./HomePage.module.css";
 
 import Cards from "../Cards/Cards";
+import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, setIndexPage } from "../../redux/actions";
@@ -36,6 +37,8 @@ const HomePage = () => {
                 <span>Page {indexPage} of {quantityPages || 1}</span>
                 <button onClick={handleClick} value={'-'} disabled={indexPage >= quantityPages}>Next</button>
             </div>
+
+      <Footer/>
     </div>
   );
 };

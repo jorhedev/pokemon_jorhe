@@ -6,9 +6,11 @@ import {
   ORDER_ATTACK,
   RESET,
   SET_INDEX_PAGE,
+  SET_SOURCE,
 } from "./actions";
 
 const initialState = {
+  source: "API",
   pokemons: [],
   filteredPokemons: [],
   originalPokemons: [],
@@ -20,6 +22,8 @@ const initialState = {
   quantityPages: 1,
   prevIndexPage: 1,
 };
+
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,6 +37,8 @@ const reducer = (state = initialState, action) => {
         quantityPages: Math.ceil(action.payload.length / state.quantityPokemons),
 
       };
+
+
     case GET_POKEMONS_NAME:
       return { ...state, updatedShowPokemons: [action.payload] };
 
@@ -40,7 +46,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         updatedShowPokemons: state.pokemons.filter((pokemon) =>
-          pokemon.types.some((typeObj) => typeObj.type.name === action.payload)
+          pokemon.types?.some((types) => types.name === action.payload)
         ),
       };
 
@@ -89,6 +95,20 @@ const reducer = (state = initialState, action) => {
           indexFirstPokemon: first,
           updatedShowPokemons: update,
           prevIndexPage: state.indexPage, // Actualiza la propiedad prevIndexPage
+      };
+    }
+
+    case SET_SOURCE:{
+      const source = action.payload; // Obtiene el valor de "source" del payload de la acción
+
+      const updatedShowPokemons = state.originalPokemons.filter((pokemon) => {
+        return source === "" || pokemon.source === source;
+      });
+
+      return {
+        ...state,
+        source,
+        updatedShowPokemons,
       };
     }
 

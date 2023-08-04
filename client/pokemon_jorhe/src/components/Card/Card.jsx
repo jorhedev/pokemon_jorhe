@@ -1,5 +1,7 @@
 import styles from "./Card.module.css";
 import { NavLink } from "react-router-dom";
+/* eslint-disable react/prop-types */
+
 
 const Card = ({ id, name, image, types }) => {
 
@@ -23,10 +25,8 @@ const Card = ({ id, name, image, types }) => {
         </div>
 
         <div className={styles.tipo}>
-        {types.map(({ slot, type }) => (
-            <span key={slot} className={styles.type}>
-              {type.name}
-            </span>
+        {types.map((type, index) => (
+          <span className={styles.type} key={index}>{type.name}</span>
           ))}
         </div>
 
@@ -36,3 +36,20 @@ const Card = ({ id, name, image, types }) => {
   );
 };
 export default Card;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 import styles from "./CreatePokemon.module.css";
+
 import { useState } from "react"
 import { validateName, validateImage, valHp, valAttack, valDefense,
 valSpeed, valHeight, valWeight} from "./validation";
@@ -6,6 +7,10 @@ import axios from 'axios';
 
 
 const CreatePokemon = () => {
+
+    const [selectedTypes, setSelectedTypes] = useState([]);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
 
     const [pokeData, setPokemonData] = useState({
         name: '',
@@ -16,6 +21,7 @@ const CreatePokemon = () => {
         speed: '',
         height: '',
         weight: '',
+        types: '',
     })
 
     const [errors, setErrors] = useState({})
@@ -28,50 +34,53 @@ const CreatePokemon = () => {
         if (event.target.name === "name" || event.target.name === "image" || event.target.name === "hp" 
         || event.target.name === "attack" || event.target.name === "defense" || event.target.name === "speed"
         || event.target.name === "height" || event.target.name === "weight" ) {
-            validate();
+            validate({
+              ...pokeData,
+              [event.target.name]: event.target.value
+          });
           }
 
     }
 
-    const validate = () => {
+    const validate = ({name, image, hp, attack, defense, speed, height, weight}) => {
         const errors = {};
 
-        const nameError =validateName(pokeData.name);
+        const nameError =validateName(name);
         if (nameError) {
             errors.name = nameError
         }
 
-        const imageError = validateImage(pokeData.image);
+        const imageError = validateImage(image);
         if(imageError){
             errors.image = imageError
         }
 
-        const hpError = valHp(pokeData.hp);
+        const hpError = valHp(hp);
         if(hpError){
             errors.hp = hpError
         }
 
-        const attackError = valAttack(pokeData.attack);
+        const attackError = valAttack(attack);
         if(attackError){
             errors.attack = attackError
         }
 
-        const defenseError = valDefense(pokeData.defense);
+        const defenseError = valDefense(defense);
         if(defenseError){
             errors.defense = defenseError
         }
 
-        const speedError = valSpeed(pokeData.speed);
+        const speedError = valSpeed(speed);
         if(speedError){
             errors.speed = speedError
         }
         
-        const heightError = valHeight(pokeData.height);
+        const heightError = valHeight(height);
         if(heightError){
             errors.height = heightError
         }
 
-        const weightError = valWeight(pokeData.weight);
+        const weightError = valWeight(weight);
         if(weightError){
             errors.weight = weightError
         }
@@ -81,9 +90,19 @@ const CreatePokemon = () => {
     }
 
 
+    const handleTypeChange = (event) => {
+      const typeValue = event.target.value;
+      if (event.target.checked) {
+        setSelectedTypes((prevTypes) => [...prevTypes, typeValue]);
+      } else {
+        setSelectedTypes((prevTypes) => prevTypes.filter((type) => type !== typeValue));
+      }
+    };
+
+
       // Función para manejar el envío del formulario
   const handleSubmit = (event) => {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente
+    event.preventDefault(); 
 
     const dataToSend = {
         name: pokeData.name,
@@ -94,22 +113,42 @@ const CreatePokemon = () => {
         speed: pokeData.speed,
         height: pokeData.height,
         weight: pokeData.weight,
-        typeId: [1, 2, 3], // Suponiendo que tienes un array de ids de tipos
+        typeId: selectedTypes, 
       };
+
+      console.log('Data to send:', dataToSend);
 
       axios.post('http://localhost:3001/pokemons', dataToSend)
       .then((response) => {
         console.log('Response from server:', response.data);
-        // Realiza cualquier acción adicional después de recibir la respuesta del servidor
+        setIsSubmitted(true); 
+        setPokemonData({ 
+          name: '',
+          image: '',
+          hp: '',
+          attack: '',
+          defense: '',
+          speed: '',
+          height: '',
+          weight: '',
+          types: '',
+        });
+        setSelectedTypes([]); 
+        setErrors({}); 
       })
       .catch((error) => {
         console.error('Error during POST request:', error);
+        if (error.response && error.response.data && error.response.data.message) {
+          setErrors({ server: 'The Pokémon with this name already exists. Please choose a different name.' });
+        } else {
+          setErrors({ server: 'Something went wrong. Please try again later.' });
+        }
       });
   };
+  
 
   return (
     <div className={styles.container}>
-    <h1>Create your Pokemon</h1>
     <div className={styles.boxForm}>
       <form className={styles.form} autoComplete="off">
 
@@ -166,13 +205,115 @@ const CreatePokemon = () => {
         </div>
 
         </div>
+        <p>Selecciona los tipos:</p>
+
+        <div className={styles.types}>
+        <label>
+          <input type="checkbox" name="type" value="1" checked={selectedTypes.includes("1")} onChange={handleTypeChange}/>
+          Normal
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="2" checked={selectedTypes.includes("2")} onChange={handleTypeChange}/>
+          Fighting
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="3" checked={selectedTypes.includes("3")} onChange={handleTypeChange}/>
+          Flying
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="4" checked={selectedTypes.includes("4")} onChange={handleTypeChange}/>
+          Poison
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="5" checked={selectedTypes.includes("5")} onChange={handleTypeChange}/>
+          Ground
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="6" checked={selectedTypes.includes("6")} onChange={handleTypeChange}/>
+          Rock
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="7" checked={selectedTypes.includes("7")} onChange={handleTypeChange}/>
+          Bug
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="8" checked={selectedTypes.includes("8")} onChange={handleTypeChange}/>
+          Ghost
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="9" checked={selectedTypes.includes("9")} onChange={handleTypeChange}/>
+          Steel
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="10" checked={selectedTypes.includes("10")} onChange={handleTypeChange}/>
+          Fire
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="11" checked={selectedTypes.includes("11")} onChange={handleTypeChange}/>
+          Water
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="12" checked={selectedTypes.includes("12")} onChange={handleTypeChange}/>
+          Grass
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="13" checked={selectedTypes.includes("13")} onChange={handleTypeChange}/>
+          Electric
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="14" checked={selectedTypes.includes("14")} onChange={handleTypeChange}/>
+          Phychic
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="15" checked={selectedTypes.includes("15")} onChange={handleTypeChange}/>
+          Ice
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="16" checked={selectedTypes.includes("16")} onChange={handleTypeChange}/>
+          Dragon
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="17" checked={selectedTypes.includes("17")} onChange={handleTypeChange}/>
+          Dark
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="18" checked={selectedTypes.includes("18")} onChange={handleTypeChange}/>
+          Fairy
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="19" checked={selectedTypes.includes("19")} onChange={handleTypeChange}/>
+          Unknown
+        </label>
+        <label>
+          <input type="checkbox" name="type" value="20" checked={selectedTypes.includes("20")} onChange={handleTypeChange}/>
+          Shadow
+        </label>
+        </div>
 
 
-        <button type="submit" onClick={handleSubmit} disabled={!pokeData.name || !pokeData.image  || !pokeData.hp || !pokeData.attack || !pokeData.defense || Object.keys(errors).length > 0 } >CREATE</button>
+        <button type="submit" onClick={handleSubmit} disabled={!pokeData.name || !pokeData.image  || !pokeData.hp || !pokeData.attack || !pokeData.defense ||  Object.keys(errors).length > 0 } >CREATE</button>
 
       </form>
       </div>
+
+      <div className={styles.create}>
+        <h1>Create your Pokemon</h1>
+        <div className={styles.box}>
+          <div className={styles.image}>
+          {pokeData.image && <img src={pokeData.image} alt={pokeData.name} className={styles.img}  />}
+          </div>
+          
+          <div className={styles.info}>
+            <h2>{pokeData.name}</h2>
+          </div>
+          </div>
+          {isSubmitted && <p>Pokemon create successfully!</p>}
+          {errors.server && <p className={styles.error}>{errors.server}</p>}
+
+
+      </div>
     </div>
+
   );
 };
 

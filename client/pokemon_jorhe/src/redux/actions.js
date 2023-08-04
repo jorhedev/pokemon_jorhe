@@ -8,6 +8,8 @@ export const ORDER = "ORDER"
 export const ORDER_ATTACK = "ORDER_ATTACK"
 export const RESET = "RESET";
 export const SET_INDEX_PAGE = "SET_INDEX_PAGE";
+export const SET_SOURCE = "SET_SOURCE";
+
 
 
 export const getPokemons = () => {
@@ -66,12 +68,19 @@ export const setIndexPage = (index) => {
   };
 };
 
+export const setSources = (source) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/pokemons?source=${source}`);
+      const pokemons = response.data;
 
+      dispatch({
+        type: GET_POKEMONS,
+        payload: pokemons,
+      });
 
-// export const getPokemon = (id) => {
-//   return async function (dispatch) {
-//     const apiData = await axios.get(`http://localhost:3001/pokemons/id/${id}`);
-//     const pokemon = apiData.data;
-//     dispatch({type: GET_POKEMON, payload: pokemon});
-//   };
-// };
+    } catch (error) {
+      // Manejar el error si ocurre
+    }
+  };
+};

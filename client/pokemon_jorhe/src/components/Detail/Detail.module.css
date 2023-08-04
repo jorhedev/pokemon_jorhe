@@ -18,9 +18,9 @@
 
 .cardDetail{
 
-    height: 700px;
-    width: 350px;
-    border-radius: 5% / 3.5%;
+    height: 350px;
+    width: 800px;
+    border-radius: 40% / 3.5%;
     position: relative;
     overflow: hidden;
     margin: 20px;
@@ -135,10 +135,12 @@
 
 
 .cardAbout{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+  max-height: 550px;
+  padding: 30px;
 }
 
 
@@ -148,6 +150,11 @@
 }
 
 .aboutPokemon{
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  align-items: flex-start;
+  justify-content: center;
     font-family: 'Secular One', sans-serif;
     color: white;
 }
@@ -155,7 +162,20 @@
 .aboutPokemon h2{
     text-transform: uppercase;
     font-size: 50px;
-    margin-top: -30px;
+    margin-bottom: none;
 }
+
+.data{
+  margin-top: -40px;
+  padding: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 2px 20px;
+  font-family: 'Secular One', sans-serif;
+  font-weight: bold;
+}
+
 
 

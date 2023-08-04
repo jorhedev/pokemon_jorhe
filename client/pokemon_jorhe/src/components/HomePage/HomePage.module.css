@@ -5,9 +5,44 @@
     justify-content: center;
     min-height: 100vh;
     width: 100%;
-    background-image: url('../../assets/landscapePokemon1.jpg');
+    background-image: url('../../assets/pxfuel.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size:cover;
     padding-top: 100px;
+}
+
+.paginate{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.524);
+}
+
+.paginate button{
+    font-family: 'Secular One', sans-serif;
+    font-size: 1rem;
+    width: 100px; /* Adjust the width as per your needs */
+    height: 40px;
+    border-radius: 3px ;
+    border-color: black;
+    color: white;
+    background-color: transparent; /* Set a solid background color */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); /* Add a gradient overlay for the bevel effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -2px 5px rgba(255, 255, 255, 0.5); /* Create the bevel effect */
+}
+
+
+.paginate button:hover{
+    transform: translateY(-2px); /* Move the button slightly up on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 -4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.paginate span{
+    color: white;
+    font-family: 'Secular One', sans-serif;
+    font-size: 1rem;
+    padding: 20px;
 }

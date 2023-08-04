@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage/HomePage"
 import Navbar from "./components/Navbar/Navbar"
 import Detail from "./components/Detail/Detail"
 import CreatePokemon from "./components/CreatePokemon/CreatePokemon"
+import About from "./components/About/About"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/home' element={<HomePage/>}/>
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<CreatePokemon />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   )

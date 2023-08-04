@@ -1,0 +1,61 @@
+
+.container{
+    margin-top: 2rem;
+    display: flex;
+    position:relative;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: transparent; /* Set a solid background color */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.145), rgba(0, 0, 0, 0.8)); /* Add a gradient overlay for the bevel effect */
+}
+
+.box{
+    width: 100%;
+    display: flex;
+    grid-gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+
+
+.fBox{
+    color: white;
+    font-family: 'Secular One', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+.fBox .icon a{
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    transition: 2s;
+}
+
+.icon a:hover {
+    color: red;
+}
+
+.fBox .iconA a{
+    color: white;
+    font-family: 'Secular One', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    transition: 2s;
+}
+
+.iconA a:hover {
+    color: red;
+}
+
+
